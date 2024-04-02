@@ -3,7 +3,7 @@ import getBalance from "../controllers/balanceRetrieveController";
 const router = express.Router();
 /**
  * @swagger
- * /getBalance:
+ * /balance:
  *   get:
  *     summary: Get balance of a wallet for a specific token
  *     description: Retrieve the balance of a wallet for a specific token address.
