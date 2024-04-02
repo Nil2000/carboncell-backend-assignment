@@ -14,8 +14,12 @@ const options = {
 		schemes: ["http", "https"],
 		servers: [
 			{
-				url: `https://carboncell-backend-assignment.onrender.com/`, // Update this with your server URL
+				url: `http://localhost:${PORT}`, // Update this with your server URL
 				description: "Development server",
+			},
+			{
+				url: `https://carboncell-backend-assignment.onrender.com/`, // Update this with your server URL
+				description: "Production server",
 			},
 		],
 		components: {
