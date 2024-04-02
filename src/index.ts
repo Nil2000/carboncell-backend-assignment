@@ -6,7 +6,8 @@ import dataRetrieveRoutes from "./routes/dataRetrieveRoutes";
 import balanceRetrieveRoutes from "./routes/balanceRetrieveRoutes";
 import { verifyToken } from "./middlewares/auth";
 import cookieParser from "cookie-parser";
-import { specs, swaggerUiExpress } from "./swagger";
+import * as localSwagger from "./swagger-dev";
+import * as prodSwagger from "./swagger-prod";
 import cors from "cors";
 dotenv.config();
 const app = express();
@@ -27,7 +28,19 @@ app.use(
 	})
 );
 app.use(cookieParser());
-app.use("/api-docs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+if (process.env.NODE_ENV === "production") {
+	app.use(
+		"/api-docs",
+		prodSwagger.swaggerUiExpress.serve,
+		prodSwagger.swaggerUiExpress.setup(prodSwagger.specs)
+	);
+} else {
+	app.use(
+		"/api-docs",
+		localSwagger.swaggerUiExpress.serve,
+		localSwagger.swaggerUiExpress.setup(localSwagger.specs)
+	);
+}
 app.use("/auth", authRoutes);
 app.use("/", verifyToken, dataRetrieveRoutes);
 app.use("/balance", verifyToken, balanceRetrieveRoutes);
