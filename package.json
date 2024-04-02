@@ -31,9 +31,7 @@
 		"swagger-ui-express": "^5.0.0",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.4.3",
-		"web3": "^4.7.0"
-	},
-	"devDependencies": {
+		"web3": "^4.7.0",
 		"@types/cookie-parser": "^1.4.7",
 		"@types/jsonwebtoken": "^9.0.6",
 		"@types/swagger-jsdoc": "^6.0.4",
