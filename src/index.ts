@@ -20,7 +20,10 @@ app.get("/", (req, res) => {
 });
 app.use(
 	cors({
-		origin: `http://localhost:${PORT}`,
+		origin: [
+			`http://localhost:${PORT}`,
+			`https://carboncell-backend-assignment.onrender.com/`,
+		],
 	})
 );
 app.use(cookieParser());
